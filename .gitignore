@@ -1,0 +1,67 @@
+# =============== #
+# Unity Generated #
+# =============== #
+
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+[Uu]serSettings/
+Assets/StreamingAssets/aa.meta
+Assets/StreamingAssets/aa/
+
+# Unity Cache
+.sysinfo/
+*.stacktrace
+*.pidb
+*.booproj
+*.svd
+
+# Crash & Log files
+*.log
+*.bak
+*.tmp
+
+# Auto-generated Visual Studio files
+.vscode/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+
+# JetBrains Rider / IntelliJ
+.idea/
+*.sln.iml
+*.DotSettings
+.idea/.idea/
+.idea/.idea.*
+
+# Rider-specific caches
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries
+.idea/modules.xml
+
+# OS generated
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Package Manager
+Packages/packages-lock.json
+
+# Unity Collaborate
+.collabignore
+
+# Rider Plugin Caches
+.idea/.rider/
+.idea/.riderModules/
+
+# Unity Cloud Build
+.projectid
