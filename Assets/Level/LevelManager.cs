@@ -6,6 +6,10 @@ public class LevelManager : MonoBehaviour
     [Header("Configuration")]
     [SerializeField] private Vector2 _levelBounds = new (5, 3);
     
+    [Header("No-Spawn Zone")]
+    [SerializeField] private Vector3 _noSpawnZoneCenter = new(0, 2, 0);
+    [SerializeField] private Vector2 _noSpawnZoneSize = new(3, 2);
+
     [SerializeField] private Food _foodPrefab;
     [SerializeField] private Ghost _ghostPrefab;
     
@@ -32,7 +36,7 @@ public class LevelManager : MonoBehaviour
 
     private void SpawnNewFood(Food usedFood)
     {
-        if (_activeFood != null)
+        if (_activeFood)
         {
             _activeFood.gameObject.SetActive(false);
         }
@@ -54,19 +58,41 @@ public class LevelManager : MonoBehaviour
 
     private Vector3 GetRandomGridPosition()
     {
-        var x = Random.Range(-(int)_levelBounds.x, (int)_levelBounds.x + 1);
-        var y = Random.Range(-(int)_levelBounds.y, (int)_levelBounds.y + 1);
+        Vector3 position;
+        var attempts = 0;
 
-        return new Vector3(x * GridSize, y * GridSize, 0);
+        do
+        {
+            var x = Random.Range(-(int)_levelBounds.x, (int)_levelBounds.x + 1);
+            var y = Random.Range(-(int)_levelBounds.y, (int)_levelBounds.y + 1);
+            position = new Vector3(x * GridSize, y * GridSize, 0);
+            attempts++;
+        }
+        while (IsInNoSpawnZone(position) && attempts < 100);
+
+        return position;
+    }
+
+    private bool IsInNoSpawnZone(Vector3 position)
+    {
+        var min = _noSpawnZoneCenter - new Vector3(_noSpawnZoneSize.x / 2f, _noSpawnZoneSize.y / 2f, 0);
+        var max = _noSpawnZoneCenter + new Vector3(_noSpawnZoneSize.x / 2f, _noSpawnZoneSize.y / 2f, 0);
+
+        return position.x >= min.x && position.x <= max.x &&
+               position.y >= min.y && position.y <= max.y;
     }
 
     private void OnDrawGizmos()
     {
+        // Level bounds
         Gizmos.color = Color.green;
-
         var center = Vector3.zero;
         var size = new Vector3(_levelBounds.x * 2 + 1, _levelBounds.y * 2 + 1, 0.1f);
-
         Gizmos.DrawWireCube(center, size);
+
+        // No-spawn zone
+        Gizmos.color = Color.red;
+        var noSpawnSize = new Vector3(_noSpawnZoneSize.x, _noSpawnZoneSize.y, 0.1f);
+        Gizmos.DrawWireCube(_noSpawnZoneCenter, noSpawnSize);
     }
 }
