@@ -1,9 +1,9 @@
-using System;
 using UnityEngine;
 
 public class Ghost : MonoBehaviour
 {
     private PlayerMovement _player;
+    private int _currentPathIndex = 0;
     
     public void Initialize(PlayerMovement player)
     {
@@ -20,15 +20,16 @@ public class Ghost : MonoBehaviour
         
         _player.OnMove -= FollowMovement;
     }
+    private void FollowMovement(Vector2 obj)
+    {
+        var path = PathTracker.GetPlayerPath();
 
-    private void FollowMovement(Vector2 direction)
-    { 
-        if (!_player)
+        if (_currentPathIndex >= path.Count)
         {
             return;
         }
         
-        var nextPos = transform.position + (Vector3)(direction * LevelManager.GridSize);
-        transform.position = nextPos;
+        transform.position = path[_currentPathIndex];
+        _currentPathIndex++;
     }
 }

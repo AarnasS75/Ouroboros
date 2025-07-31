@@ -30,15 +30,18 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator EnemySpawnRoutine()
     {
-        yield return _waitForNewEnemyToSpawn;
-        
-        var ghost = _ghosts.FirstOrDefault(x => !x.isActiveAndEnabled);
-        if (!ghost)
+        while (true)
         {
-            yield break;
+            yield return _waitForNewEnemyToSpawn;
+
+            var ghost = _ghosts.FirstOrDefault(x => !x.isActiveAndEnabled);
+            if (!ghost)
+            {
+                yield break;
+            }
+
+            ghost.gameObject.SetActive(true);
+            OnEnemySpawned?.Invoke(ghost);
         }
-        
-        ghost.gameObject.SetActive(true);
-        OnEnemySpawned?.Invoke(ghost);
-    } 
+    }
 }

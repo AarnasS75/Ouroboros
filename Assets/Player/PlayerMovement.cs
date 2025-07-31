@@ -47,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
             var nextPos = transform.position + (Vector3)(_currentDirection * LevelManager.GridSize);
             transform.position = nextPos;
             
+            PathTracker.Add(nextPos);
             OnMove?.Invoke(_currentDirection);
 
             yield return _waitBetweenMove;
