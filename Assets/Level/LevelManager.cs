@@ -1,5 +1,4 @@
-﻿using System;
-using Static_Events;
+﻿using Static_Events;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
@@ -9,6 +8,8 @@ public class LevelManager : MonoBehaviour
     
     [SerializeField] private Food _foodPrefab;
     [SerializeField] private Ghost _ghostPrefab;
+    
+    public const float GridSize = 1f;
     
     private Food _activeFood;
 
@@ -53,10 +54,10 @@ public class LevelManager : MonoBehaviour
 
     private Vector3 GetRandomGridPosition()
     {
-        var x = UnityEngine.Random.Range(-(int)_levelBounds.x, (int)_levelBounds.x + 1);
-        var y = UnityEngine.Random.Range(-(int)_levelBounds.y, (int)_levelBounds.y + 1);
+        var x = Random.Range(-(int)_levelBounds.x, (int)_levelBounds.x + 1);
+        var y = Random.Range(-(int)_levelBounds.y, (int)_levelBounds.y + 1);
 
-        return new Vector3(x, y, 0);
+        return new Vector3(x * GridSize, y * GridSize, 0);
     }
 
     private void OnDrawGizmos()

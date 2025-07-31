@@ -1,11 +1,9 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float _moveDelay = 0.5f;
-    [SerializeField] private float _gridSize = 1f;
 
     private bool _isMoving;
     private Vector2 _currentDirection = Vector2.right;
@@ -43,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
 
         while (_isMoving)
         {
-            var nextPos = transform.position + (Vector3)(_currentDirection * _gridSize);
+            var nextPos = transform.position + (Vector3)(_currentDirection * LevelManager.GridSize);
             transform.position = nextPos;
 
             yield return _waitBetweenMove;
