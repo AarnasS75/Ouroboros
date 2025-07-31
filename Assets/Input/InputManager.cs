@@ -1,22 +1,33 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
     public static event Action<Vector2> OnMoveDirectionChanged;
 
-    private void Update()
+    private PlayerControls _playerControls;
+
+    private void Awake()
     {
-        var direction = Vector2.zero;
+        _playerControls = new PlayerControls();
+    }
 
-        if (Input.GetKeyDown(KeyCode.W)) direction = Vector2.up;
-        else if (Input.GetKeyDown(KeyCode.S)) direction = Vector2.down;
-        else if (Input.GetKeyDown(KeyCode.A)) direction = Vector2.left;
-        else if (Input.GetKeyDown(KeyCode.D)) direction = Vector2.right;
+    private void OnEnable()
+    {
+        _playerControls.Enable();
+        _playerControls.Player.Move.performed += OnDirectionChanged;
+    }
 
-        if (direction != Vector2.zero)
-        {
-            OnMoveDirectionChanged?.Invoke(direction);
-        }
+    private void OnDisable()
+    {
+        _playerControls.Disable();
+        _playerControls.Player.Move.performed -= OnDirectionChanged;
+    }
+
+    private void OnDirectionChanged(InputAction.CallbackContext ctx)
+    {
+        var direction = ctx.ReadValue<Vector2>();
+        OnMoveDirectionChanged?.Invoke(direction);
     }
 }
