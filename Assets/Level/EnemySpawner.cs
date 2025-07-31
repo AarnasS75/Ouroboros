@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Linq;
+using Static_Events;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -26,6 +27,21 @@ public class EnemySpawner : MonoBehaviour
         _waitForNewEnemyToSpawn = new WaitForSeconds(_enemySpawnInterval);
 
         StartCoroutine(nameof(EnemySpawnRoutine));
+    }
+
+    private void OnEnable()
+    {
+        StaticEventHandler.OnGameFinished += OnGameOver;
+    }
+
+    private void OnDisable()
+    {
+        StaticEventHandler.OnGameFinished -= OnGameOver;
+    }
+
+    private void OnGameOver()
+    {
+        StopAllCoroutines();
     }
 
     private IEnumerator EnemySpawnRoutine()

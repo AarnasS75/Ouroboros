@@ -1,3 +1,5 @@
+using System;
+using Static_Events;
 using UnityEngine;
 
 public class Ghost : MonoBehaviour
@@ -31,5 +33,16 @@ public class Ghost : MonoBehaviour
         
         transform.position = path[_currentPathIndex];
         _currentPathIndex++;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!other.TryGetComponent(out PlayerMovement player))
+        {
+            return;
+        }
+        
+        StaticEventHandler.CallGameFinishedEvent();
+        Destroy(player.gameObject);
     }
 }

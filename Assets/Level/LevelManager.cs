@@ -9,8 +9,9 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Vector2 _noSpawnZoneSize = new(3, 2);
     [SerializeField] private Transform _playerSpawnPoint;
 
-    [Header("Spawners")]
+    [Header("Controllers")]
     [SerializeField] private EnemySpawner _enemySpawner;
+    [SerializeField] private SnakeBodyController _snakeBodyController;
     
     [Header("Prefabs")]
     [SerializeField] private Food _foodPrefab;
@@ -55,7 +56,11 @@ public class LevelManager : MonoBehaviour
             _activeFood.gameObject.SetActive(false);
         }
 
-        SpawnFood();
+        _snakeBodyController.EnablePart();
+        if (!_snakeBodyController.IsWaitingForHead)
+        {
+            SpawnFood();
+        }
     }
     
     private void PositionEnemy(Ghost enemy)
