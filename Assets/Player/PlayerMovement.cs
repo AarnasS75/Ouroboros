@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
@@ -8,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     private bool _isMoving;
     private Vector2 _currentDirection = Vector2.right;
     private WaitForSeconds _waitBetweenMove;
+    
+    public event Action<Vector2> OnMove;
     
     private void Start()
     {
@@ -43,6 +46,8 @@ public class PlayerMovement : MonoBehaviour
         {
             var nextPos = transform.position + (Vector3)(_currentDirection * LevelManager.GridSize);
             transform.position = nextPos;
+            
+            OnMove?.Invoke(_currentDirection);
 
             yield return _waitBetweenMove;
         }

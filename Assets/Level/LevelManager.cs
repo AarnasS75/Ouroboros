@@ -5,20 +5,32 @@ public class LevelManager : MonoBehaviour
 {
     [Header("Configuration")]
     [SerializeField] private Vector2 _levelBounds = new (5, 3);
-    
-    [Header("No-Spawn Zone")]
     [SerializeField] private Vector3 _noSpawnZoneCenter = new(0, 2, 0);
     [SerializeField] private Vector2 _noSpawnZoneSize = new(3, 2);
+    [SerializeField] private Transform _playerSpawnPoint;
 
+    [Header("Spawners")]
+    [SerializeField] private EnemySpawner _enemySpawner;
+    
+    [Header("Prefabs")]
     [SerializeField] private Food _foodPrefab;
-    [SerializeField] private Ghost _ghostPrefab;
+    [SerializeField] private PlayerMovement _playerPrefab;
     
     public const float GridSize = 1f;
     
     private Food _activeFood;
-
+    private Vector2 _playerSpawnPos;
+    private PlayerMovement _player;
+    
     private void Start()
     {
+        _player = FindAnyObjectByType<PlayerMovement>();
+        
+        if (!_player)
+        {
+            _player = Instantiate(_playerPrefab, _playerSpawnPoint.position, Quaternion.identity);
+        }
+        
         SpawnFood();
     }
 
@@ -26,12 +38,14 @@ public class LevelManager : MonoBehaviour
     {
         StaticEventHandler.OnFoodConsumed += SpawnNewFood;
         StaticEventHandler.OnFoodDestroyed += SpawnNewFood;
+        _enemySpawner.OnEnemySpawned += PositionEnemy;
     }
 
     private void OnDisable()
     {
         StaticEventHandler.OnFoodConsumed -= SpawnNewFood;
         StaticEventHandler.OnFoodDestroyed -= SpawnNewFood;
+        _enemySpawner.OnEnemySpawned -= PositionEnemy;
     }
 
     private void SpawnNewFood(Food usedFood)
@@ -43,7 +57,13 @@ public class LevelManager : MonoBehaviour
 
         SpawnFood();
     }
-
+    
+    private void PositionEnemy(Ghost enemy)
+    {
+        enemy.transform.position = _playerSpawnPoint.position;
+        enemy.Initialize(_player);
+    }
+    
     private void SpawnFood()
     {
         if (!_activeFood)
