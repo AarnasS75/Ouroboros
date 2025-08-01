@@ -1,5 +1,8 @@
-﻿using Static_Events;
+﻿using System;
+using System.Collections;
+using Static_Events;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class LevelManager : MonoBehaviour
 {
@@ -22,23 +25,28 @@ public class LevelManager : MonoBehaviour
     private Food _activeFood;
     private Vector2 _playerSpawnPos;
     private PlayerMovement _player;
-    
+
+    public static event Action OnLevelReset;
+
     private void Start()
     {
         _player = FindAnyObjectByType<PlayerMovement>();
         
         if (!_player)
         {
-            _player = Instantiate(_playerPrefab, _playerSpawnPoint.position, Quaternion.identity);
+            _player = Instantiate(_playerPrefab);
         }
+        _player.gameObject.SetActive(false);
+        _player.transform.SetPositionAndRotation(_playerSpawnPoint.position, Quaternion.identity);
         
-        SpawnFood();
+        _enemySpawner.Initialize(_player);
     }
 
     private void OnEnable()
     {
         StaticEventHandler.OnFoodConsumed += SpawnNewFood;
         StaticEventHandler.OnFoodDestroyed += SpawnNewFood;
+        StaticEventHandler.OnGameFinished += HandleGameEnded;
         _enemySpawner.OnEnemySpawned += PositionEnemy;
     }
 
@@ -46,7 +54,21 @@ public class LevelManager : MonoBehaviour
     {
         StaticEventHandler.OnFoodConsumed -= SpawnNewFood;
         StaticEventHandler.OnFoodDestroyed -= SpawnNewFood;
+        StaticEventHandler.OnGameFinished -= HandleGameEnded;
         _enemySpawner.OnEnemySpawned -= PositionEnemy;
+    }
+
+    public void StartGame()
+    {
+        StartCoroutine(WaitAndStart());
+    }
+
+    private void HandleGameEnded(GameOverEventArgs args)
+    {
+        if (args.IsPlayerDead)
+        {
+            StartCoroutine(WaitAndEnd());
+        }
     }
 
     private void SpawnNewFood(Food usedFood)
@@ -65,8 +87,8 @@ public class LevelManager : MonoBehaviour
     
     private void PositionEnemy(Ghost enemy)
     {
-        enemy.transform.position = _playerSpawnPoint.position;
-        enemy.Initialize(_player);
+        /*enemy.transform.position = _playerSpawnPoint.position;
+        enemy.gameObject.SetActive(true);*/
     }
     
     private void SpawnFood()
@@ -105,6 +127,28 @@ public class LevelManager : MonoBehaviour
 
         return position.x >= min.x && position.x <= max.x &&
                position.y >= min.y && position.y <= max.y;
+    }
+
+    private IEnumerator WaitAndStart()
+    {
+        yield return new WaitForSeconds(2f);
+        
+        _player.gameObject.SetActive(true);
+        SpawnFood();
+        _enemySpawner.StartSpawning();
+    }
+    
+    private IEnumerator WaitAndEnd()
+    {
+        yield return new WaitForSeconds(2f);
+        
+        _player.gameObject.SetActive(false);
+        _activeFood.gameObject.SetActive(false);
+        _player.transform.position = _playerSpawnPoint.position;
+        _enemySpawner.Reset();
+        _snakeBodyController.Reset();
+        
+        OnLevelReset?.Invoke();
     }
 
     private void OnDrawGizmos()

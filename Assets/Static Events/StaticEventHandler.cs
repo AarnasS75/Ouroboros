@@ -6,7 +6,7 @@ namespace Static_Events
     {
         public static event Action<Food> OnFoodConsumed;
         public static event Action<Food> OnFoodDestroyed;
-        public static event Action OnGameFinished;
+        public static event Action<GameOverEventArgs> OnGameFinished;
         
         public static void CallFoodConsumedEvent(Food consumedFood)
         {
@@ -18,9 +18,14 @@ namespace Static_Events
             OnFoodDestroyed?.Invoke(destoryedFood);
         }
         
-        public static void CallGameFinishedEvent()
+        public static void CallGameFinishedEvent(GameOverEventArgs args)
         {
-            OnGameFinished?.Invoke();
+            OnGameFinished?.Invoke(args);
         }
+    }
+
+    public class GameOverEventArgs
+    {
+        public bool IsPlayerDead;
     }
 }

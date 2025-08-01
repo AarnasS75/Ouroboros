@@ -34,8 +34,18 @@ public class SnakeBodyController : MonoBehaviour
         if (other.TryGetComponent(out PlayerMovement player) && IsWaitingForHead)
         {
             EnablePart();
-            StaticEventHandler.CallGameFinishedEvent();
-            Destroy(player.gameObject);
+            StaticEventHandler.CallGameFinishedEvent(new GameOverEventArgs
+            {
+                IsPlayerDead = false
+            });
+        }
+    }
+
+    public void Reset()
+    {
+        for (var i = 0; i < transform.childCount; i++)
+        {
+            _parts[i].SetActive(false);
         }
     }
 }

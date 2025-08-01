@@ -14,18 +14,26 @@ public class EnemySpawner : MonoBehaviour
     
     private Ghost[] _ghosts;
     private WaitForSeconds _waitForNewEnemyToSpawn;
+
+    private Vector2 _startPos;
     
-    private void Start()
+    public void Initialize(PlayerMovement player)
     {
         _ghosts = new Ghost[_maxEnemyCount];
+        _startPos = player.transform.position;
+        
         for (var i = 0; i < _maxEnemyCount; i++)
         {
-            _ghosts[i] = Instantiate(_ghostPrefab);
+            _ghosts[i] = Instantiate(_ghostPrefab, _startPos, Quaternion.identity);
             _ghosts[i].gameObject.SetActive(false);
+            _ghosts[i].Initialize(player);
         }
 
         _waitForNewEnemyToSpawn = new WaitForSeconds(_enemySpawnInterval);
+    }
 
+    public void StartSpawning()
+    {
         StartCoroutine(nameof(EnemySpawnRoutine));
     }
 
@@ -39,7 +47,7 @@ public class EnemySpawner : MonoBehaviour
         StaticEventHandler.OnGameFinished -= OnGameOver;
     }
 
-    private void OnGameOver()
+    private void OnGameOver(GameOverEventArgs args)
     {
         StopAllCoroutines();
     }
@@ -55,9 +63,18 @@ public class EnemySpawner : MonoBehaviour
             {
                 yield break;
             }
-
+            
             ghost.gameObject.SetActive(true);
             OnEnemySpawned?.Invoke(ghost);
+        }
+    }
+
+    public void Reset()
+    {
+        for (var i = 0; i < _maxEnemyCount; i++)
+        {
+            _ghosts[i].gameObject.SetActive(false);
+            _ghosts[i].transform.position= _startPos;
         }
     }
 }

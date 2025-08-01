@@ -3,7 +3,7 @@ using UnityEngine;
 
 public static class PathTracker
 {
-    private static readonly List<Vector2> _playerPath;
+    private static List<Vector2> _playerPath;
 
     static PathTracker()
     {
@@ -16,4 +16,9 @@ public static class PathTracker
     }
     
     public static List<Vector2> GetPlayerPath() => _playerPath;
+
+    public static void Reset()
+    {
+        _playerPath.Clear();
+    }
 }

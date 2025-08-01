@@ -207,4 +207,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23c472254104433fb5db8124ae129087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveDelay: 0.5
+  _sprite: {fileID: 6102584279291215848}
+  _moveDelay: 0.4
+  _wallLayer:
+    serializedVersion: 2
+    m_Bits: 64
