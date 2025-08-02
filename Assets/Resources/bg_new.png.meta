@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 2a66c65c29e6aea49b111b4c37065d44
+guid: 29b4d0803864fc54993976cdccff02cc
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8356281888228147551
-    second: 4x-scanlines-1920x896_0
+      213: 3453487372750851344
+    second: bg_new_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
-    sRGBTexture: 0
+    sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
     borderMipMap: 0
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -54,10 +54,10 @@ TextureImporter:
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
-  alphaUsage: 2
+  alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 10
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 4x-scanlines-1920x896_0
+      name: bg_new_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1920
-        height: 896
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1ae712965e5880c80800000000000000
-      internalID: -8356281888228147551
+      spriteID: 01d8c19d7704def20800000000000000
+      internalID: 3453487372750851344
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      4x-scanlines-1920x896_0: -8356281888228147551
+      bg_new_0: 3453487372750851344
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
