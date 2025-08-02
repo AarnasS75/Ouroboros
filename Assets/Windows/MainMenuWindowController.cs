@@ -39,13 +39,13 @@ public class MainMenuWindowController : WindowController
 
     private IEnumerator ScaleUpCoroutine()
     {
-        Vector3 initialScale = _rectTransform.localScale;
-        float elapsedTime = 0f;
+        var initialScale = _rectTransform.localScale;
+        var elapsedTime = 0f;
 
         while (elapsedTime < _transitionDuration)
         {
             elapsedTime += Time.deltaTime;
-            float t = Mathf.Clamp01(elapsedTime / _transitionDuration);
+            var t = Mathf.Clamp01(elapsedTime / _transitionDuration);
             _rectTransform.localScale = Vector3.Lerp(initialScale, _targetScale, t);
             yield return null;
         }

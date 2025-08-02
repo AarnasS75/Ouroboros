@@ -31,14 +31,16 @@ public class SnakeBodyController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.TryGetComponent(out PlayerMovement player) && IsWaitingForHead)
+        if (!other.TryGetComponent(out PlayerMovement player) || !IsWaitingForHead)
         {
-            EnablePart();
-            StaticEventHandler.CallGameFinishedEvent(new GameOverEventArgs
-            {
-                IsPlayerDead = false
-            });
+            return;
         }
+        
+        EnablePart();
+        StaticEventHandler.CallGameFinishedEvent(new GameOverEventArgs
+        {
+            IsPlayerDead = false
+        });
     }
 
     public void Reset()

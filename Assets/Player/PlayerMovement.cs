@@ -64,14 +64,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (((1 << other.gameObject.layer) & _wallLayer) != 0)
+        if (((1 << other.gameObject.layer) & _wallLayer) == 0)
         {
-            StopAllCoroutines();
-            StaticEventHandler.CallGameFinishedEvent(new GameOverEventArgs
-            {
-                IsPlayerDead = true
-            });
+            return;
         }
+        
+        StopAllCoroutines();
+        StaticEventHandler.CallGameFinishedEvent(new GameOverEventArgs
+        {
+            IsPlayerDead = true
+        });
     }
     
     private void RotateSprite(Vector2 dir)
