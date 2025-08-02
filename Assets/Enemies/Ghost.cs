@@ -37,24 +37,21 @@ public class Ghost : MonoBehaviour
         {
             return;
         }
-        
-        transform.position = path[_currentPathIndex];
-        //RotateSprite(transform.position);
+
+        var previousPosition = (Vector2)transform.position;
+        var nextPosition = path[_currentPathIndex];
+
+        transform.position = nextPosition;
+
+        var dir = (nextPosition - previousPosition).normalized;
+        if (dir != Vector2.zero)
+        {
+            RotateSprite(dir);
+        }
+
         _currentPathIndex++;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (!other.TryGetComponent(out PlayerMovement player))
-        {
-            return;
-        }
-        
-        StaticEventHandler.CallGameFinishedEvent(new GameOverEventArgs
-        {
-            IsPlayerDead = true
-        });
-    }
     private void RotateSprite(Vector2 dir)
     {
         if (dir == Vector2.right)
