@@ -46,6 +46,7 @@ public class SnakeBodyController : MonoBehaviour
 
     public void Reset()
     {
+        IsWaitingForHead = false;
         for (var i = 0; i < transform.childCount; i++)
         {
             _parts[i].SetActive(false);
