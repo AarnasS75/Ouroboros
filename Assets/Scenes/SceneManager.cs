@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class SceneManager : MonoBehaviour
 {
-    [SerializeField] private WindowController _mainMenuWindow;
-    [SerializeField] private WindowController _gameOverWindow;
+    [SerializeField] private MainMenuWindowController _mainMenuWindow;
+    [SerializeField] private GameOverWindowController _gameOverWindow;
     
     private void OnEnable()
     {
@@ -22,9 +22,10 @@ public class SceneManager : MonoBehaviour
         _mainMenuWindow.Show();
     }
 
-    private void OnLevelReset()
+    private void OnLevelReset(bool isPlayerDead)
     {
         _gameOverWindow.Show();
+        _gameOverWindow.Initialize(isPlayerDead);
     }
 
     public void ExitGame()

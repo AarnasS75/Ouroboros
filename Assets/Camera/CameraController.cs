@@ -11,6 +11,15 @@ public class CameraController : MonoBehaviour
     [SerializeField] private Color[] _colorsToLoop;
     [SerializeField] private float _speed = 1f;
     
+    [Header("Zoom on food consumption")]
+    [SerializeField] private float _zoomSize = 3f;
+    [SerializeField] private float _zoomDuration = 0.15f;
+    [SerializeField] private float _returnDuration = 0.25f;
+    
+    private Coroutine _zoomCoroutine;
+    private Camera _mainCamera;
+    private float _originalSize;
+    
     private Transform _transform;
     private Coroutine _swayCoroutine;
     private Coroutine _colorCoroutine;
@@ -18,18 +27,32 @@ public class CameraController : MonoBehaviour
     
     private void Awake()
     {
-        _initialColor = Camera.main.backgroundColor;
+        _mainCamera = Camera.main;
+        _originalSize = _mainCamera.orthographicSize;
+        _initialColor = _mainCamera.backgroundColor;
         _transform = transform;
     }
 
     private void OnEnable()
     {
         StaticEventHandler.OnGameFinished += OnGameFinished;
+        StaticEventHandler.OnFoodConsumed += OnFoodConsumed;
     }
 
     private void OnDisable()
     {
         StaticEventHandler.OnGameFinished -= OnGameFinished;
+        StaticEventHandler.OnFoodConsumed -= OnFoodConsumed;
+    }
+
+    private void OnFoodConsumed(Food food)
+    {
+        if (_zoomCoroutine != null)
+        {
+            StopCoroutine(_zoomCoroutine);
+        }
+
+        _zoomCoroutine = StartCoroutine(ZoomInAndOut());
     }
 
     public void StartSway()
@@ -60,7 +83,7 @@ public class CameraController : MonoBehaviour
             StopCoroutine(_colorCoroutine);
         }
 
-        Camera.main.backgroundColor = _initialColor;
+        _mainCamera.backgroundColor = _initialColor;
     }
     
     private IEnumerator LoopingBackgroundColorRoutine(Color[] colors, float duration)
@@ -77,7 +100,7 @@ public class CameraController : MonoBehaviour
             {
                 elapsed += Time.deltaTime;
                 float t = Mathf.Clamp01(elapsed / duration);
-                Camera.main.backgroundColor = Color.Lerp(from, to, t);
+                _mainCamera.backgroundColor = Color.Lerp(from, to, t);
                 yield return null;
             }
 
@@ -99,5 +122,30 @@ public class CameraController : MonoBehaviour
 
             yield return null;
         }
+    }
+    
+    private IEnumerator ZoomInAndOut()
+    {
+        float elapsed = 0f;
+        float startSize = _mainCamera.orthographicSize;
+
+        // Zoom in
+        while (elapsed < _zoomDuration)
+        {
+            elapsed += Time.deltaTime;
+            _mainCamera.orthographicSize = Mathf.Lerp(startSize, _zoomSize, elapsed / _zoomDuration);
+            yield return null;
+        }
+
+        // Zoom out
+        elapsed = 0f;
+        while (elapsed < _returnDuration)
+        {
+            elapsed += Time.deltaTime;
+            _mainCamera.orthographicSize = Mathf.Lerp(_zoomSize, _originalSize, elapsed / _returnDuration);
+            yield return null;
+        }
+
+        _mainCamera.orthographicSize = _originalSize;
     }
 }

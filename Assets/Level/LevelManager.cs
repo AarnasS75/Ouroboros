@@ -26,7 +26,7 @@ public class LevelManager : MonoBehaviour
     private Vector2 _playerSpawnPos;
     private PlayerMovement _player;
 
-    public static event Action OnLevelReset;
+    public static event Action<bool> OnLevelReset;
 
     private void Start()
     {
@@ -47,7 +47,6 @@ public class LevelManager : MonoBehaviour
         StaticEventHandler.OnFoodConsumed += SpawnNewFood;
         StaticEventHandler.OnFoodDestroyed += SpawnNewFood;
         StaticEventHandler.OnGameFinished += HandleGameEnded;
-        _enemySpawner.OnEnemySpawned += PositionEnemy;
     }
 
     private void OnDisable()
@@ -55,7 +54,6 @@ public class LevelManager : MonoBehaviour
         StaticEventHandler.OnFoodConsumed -= SpawnNewFood;
         StaticEventHandler.OnFoodDestroyed -= SpawnNewFood;
         StaticEventHandler.OnGameFinished -= HandleGameEnded;
-        _enemySpawner.OnEnemySpawned -= PositionEnemy;
     }
 
     public void StartGame()
@@ -65,10 +63,7 @@ public class LevelManager : MonoBehaviour
 
     private void HandleGameEnded(GameOverEventArgs args)
     {
-        if (args.IsPlayerDead)
-        {
-            StartCoroutine(WaitAndEnd());
-        }
+        StartCoroutine(WaitAndEnd(args.IsPlayerDead));
     }
 
     private void SpawnNewFood(Food usedFood)
@@ -83,12 +78,6 @@ public class LevelManager : MonoBehaviour
         {
             SpawnFood();
         }
-    }
-    
-    private void PositionEnemy(Ghost enemy)
-    {
-        /*enemy.transform.position = _playerSpawnPoint.position;
-        enemy.gameObject.SetActive(true);*/
     }
     
     private void SpawnFood()
@@ -138,8 +127,13 @@ public class LevelManager : MonoBehaviour
         _enemySpawner.StartSpawning();
     }
     
-    private IEnumerator WaitAndEnd()
+    private IEnumerator WaitAndEnd(bool isPlayerDead)
     {
+        if (!isPlayerDead)
+        {
+            _player.gameObject.SetActive(false);
+        }
+        
         yield return new WaitForSeconds(2f);
         
         _player.gameObject.SetActive(false);
@@ -148,7 +142,7 @@ public class LevelManager : MonoBehaviour
         _enemySpawner.Reset();
         _snakeBodyController.Reset();
         
-        OnLevelReset?.Invoke();
+        OnLevelReset?.Invoke(isPlayerDead);
     }
 
     private void OnDrawGizmos()

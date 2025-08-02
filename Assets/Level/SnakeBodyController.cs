@@ -37,6 +37,7 @@ public class SnakeBodyController : MonoBehaviour
         }
         
         EnablePart();
+        IsWaitingForHead = false;
         StaticEventHandler.CallGameFinishedEvent(new GameOverEventArgs
         {
             IsPlayerDead = false
