@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    public static AudioManager Instance; 
+    
     [Header("SFX")]
     [SerializeField] private List<Sound> _sfxClips;
 
@@ -14,6 +16,15 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance is null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject);
         InitializeAudioSources(_sfxClips, sfxSources);
         InitializeAudioSources(_soundtrackClips, soundtrackSources);
     }

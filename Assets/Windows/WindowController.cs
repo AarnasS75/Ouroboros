@@ -34,6 +34,8 @@ public abstract class WindowController : MonoBehaviour
     
     private void OnMoveCursor(Vector2 direction)
     {
+        AudioManager.Instance.PlaySFX(AudioTitle.MenuSelect);
+        
         if (direction == Vector2.up)
         {
             MoveCursor(-1);

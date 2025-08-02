@@ -12,8 +12,7 @@ public class Sound
 
 public enum AudioTitle
 {
-    ButtonClick,
-    Explosion,
-    BackgroundMusic,
-    BattleTheme
+    MenuSelect,
+    WallHit,
+    Soundtrack
 }
