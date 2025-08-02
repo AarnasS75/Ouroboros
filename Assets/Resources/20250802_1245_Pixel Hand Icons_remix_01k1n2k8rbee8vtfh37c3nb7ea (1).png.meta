@@ -1,0 +1,429 @@
+fileFormatVersion: 2
+guid: 59c21c68755b6bd40b341649b1b1d37d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5804157821891468014
+    second: 20250802_1245_Pixel Hand Icons_remix_01k1n2k8rbee8vtfh37c3nb7ea (1)_0
+  - first:
+      213: -2209132969069682396
+    second: 20250802_1245_Pixel Hand Icons_remix_01k1n2k8rbee8vtfh37c3nb7ea (1)_1
+  - first:
+      213: -1397103465655429373
+    second: 20250802_1245_Pixel Hand Icons_remix_01k1n2k8rbee8vtfh37c3nb7ea (1)_2
+  - first:
+      213: -5030868280025419623
+    second: 20250802_1245_Pixel Hand Icons_remix_01k1n2k8rbee8vtfh37c3nb7ea (1)_3
+  - first:
+      213: -2813109797516453696
+    second: 20250802_1245_Pixel Hand Icons_remix_01k1n2k8rbee8vtfh37c3nb7ea (1)_4
+  - first:
+      213: 3624203979856311678
+    second: 20250802_1245_Pixel Hand Icons_remix_01k1n2k8rbee8vtfh37c3nb7ea (1)_5
+  - first:
+      213: 1845529583314417619
+    second: 20250802_1245_Pixel Hand Icons_remix_01k1n2k8rbee8vtfh37c3nb7ea (1)_6
+  - first:
+      213: 1228921525149180208
+    second: 20250802_1245_Pixel Hand Icons_remix_01k1n2k8rbee8vtfh37c3nb7ea (1)_7
+  - first:
+      213: -4987219550738042224
+    second: 20250802_1245_Pixel Hand Icons_remix_01k1n2k8rbee8vtfh37c3nb7ea (1)_8
+  - first:
+      213: -4839357935480240658
+    second: 20250802_1245_Pixel Hand Icons_remix_01k1n2k8rbee8vtfh37c3nb7ea (1)_9
+  - first:
+      213: -7254088811191031888
+    second: 20250802_1245_Pixel Hand Icons_remix_01k1n2k8rbee8vtfh37c3nb7ea (1)_10
+  - first:
+      213: -7176546149010498217
+    second: 20250802_1245_Pixel Hand Icons_remix_01k1n2k8rbee8vtfh37c3nb7ea (1)_11
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: 20250802_1245_Pixel Hand Icons_remix_01k1n2k8rbee8vtfh37c3nb7ea (1)_0
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 475
+        width: 154
+        height: 167
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eea552a89c28c8050800000000000000
+      internalID: 5804157821891468014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20250802_1245_Pixel Hand Icons_remix_01k1n2k8rbee8vtfh37c3nb7ea (1)_1
+      rect:
+        serializedVersion: 2
+        x: 446
+        y: 475
+        width: 176
+        height: 167
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4216ff4e4459751e0800000000000000
+      internalID: -2209132969069682396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20250802_1245_Pixel Hand Icons_remix_01k1n2k8rbee8vtfh37c3nb7ea (1)_2
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 488
+        width: 164
+        height: 154
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3071427dccd7c9ce0800000000000000
+      internalID: -1397103465655429373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20250802_1245_Pixel Hand Icons_remix_01k1n2k8rbee8vtfh37c3nb7ea (1)_3
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 255
+        width: 177
+        height: 132
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 990fd4934f3ce2ab0800000000000000
+      internalID: -5030868280025419623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20250802_1245_Pixel Hand Icons_remix_01k1n2k8rbee8vtfh37c3nb7ea (1)_4
+      rect:
+        serializedVersion: 2
+        x: 457
+        y: 208
+        width: 153
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c85cdc2b83d5f8d0800000000000000
+      internalID: -2813109797516453696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reach
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 278
+        width: 178
+        height: 97
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7574ec5152cb4230800000000000000
+      internalID: 3624203979856311678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20250802_1245_Pixel Hand Icons_remix_01k1n2k8rbee8vtfh37c3nb7ea (1)_6
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 37
+        width: 28
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d73ee3c063ac9910800000000000000
+      internalID: 1845529583314417619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20250802_1245_Pixel Hand Icons_remix_01k1n2k8rbee8vtfh37c3nb7ea (1)_7
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 49
+        width: 27
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0312953bd910e0110800000000000000
+      internalID: 1228921525149180208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20250802_1245_Pixel Hand Icons_remix_01k1n2k8rbee8vtfh37c3nb7ea (1)_8
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 72
+        width: 62
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0923065fd36d9cab0800000000000000
+      internalID: -4987219550738042224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20250802_1245_Pixel Hand Icons_remix_01k1n2k8rbee8vtfh37c3nb7ea (1)_9
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 0
+        width: 142
+        height: 134
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee58bb2099527dcb0800000000000000
+      internalID: -4839357935480240658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20250802_1245_Pixel Hand Icons_remix_01k1n2k8rbee8vtfh37c3nb7ea (1)_10
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 0
+        width: 153
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b7a2d7f8ac445b90800000000000000
+      internalID: -7254088811191031888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20250802_1245_Pixel Hand Icons_remix_01k1n2k8rbee8vtfh37c3nb7ea (1)_11
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 0
+        width: 131
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75d180aec49c76c90800000000000000
+      internalID: -7176546149010498217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: adf5a524d7864754fab943360a44ff84
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      20250802_1245_Pixel Hand Icons_remix_01k1n2k8rbee8vtfh37c3nb7ea (1)_0: 5804157821891468014
+      20250802_1245_Pixel Hand Icons_remix_01k1n2k8rbee8vtfh37c3nb7ea (1)_1: -2209132969069682396
+      20250802_1245_Pixel Hand Icons_remix_01k1n2k8rbee8vtfh37c3nb7ea (1)_10: -7254088811191031888
+      20250802_1245_Pixel Hand Icons_remix_01k1n2k8rbee8vtfh37c3nb7ea (1)_11: -7176546149010498217
+      20250802_1245_Pixel Hand Icons_remix_01k1n2k8rbee8vtfh37c3nb7ea (1)_2: -1397103465655429373
+      20250802_1245_Pixel Hand Icons_remix_01k1n2k8rbee8vtfh37c3nb7ea (1)_3: -5030868280025419623
+      20250802_1245_Pixel Hand Icons_remix_01k1n2k8rbee8vtfh37c3nb7ea (1)_4: -2813109797516453696
+      20250802_1245_Pixel Hand Icons_remix_01k1n2k8rbee8vtfh37c3nb7ea (1)_6: 1845529583314417619
+      20250802_1245_Pixel Hand Icons_remix_01k1n2k8rbee8vtfh37c3nb7ea (1)_7: 1228921525149180208
+      20250802_1245_Pixel Hand Icons_remix_01k1n2k8rbee8vtfh37c3nb7ea (1)_8: -4987219550738042224
+      20250802_1245_Pixel Hand Icons_remix_01k1n2k8rbee8vtfh37c3nb7ea (1)_9: -4839357935480240658
+      Reach: 3624203979856311678
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
