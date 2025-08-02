@@ -166,7 +166,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.39266336, y: 0.37385514}
   m_EdgeRadius: 0
 --- !u!50 &1507209895733858070
 Rigidbody2D:
@@ -208,7 +208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sprite: {fileID: 6102584279291215848}
-  _moveDelay: 0.4
+  _moveDelay: 0.32
   _wallLayer:
     serializedVersion: 2
     m_Bits: 64

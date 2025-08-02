@@ -5,9 +5,11 @@ public abstract class WindowController : MonoBehaviour
     [SerializeField] private Cursor[] _cursors;
 
     private int _currentCursorIndex = 0;
+    private bool _isBusy;
     
     private void OnEnable()
     {
+        _isBusy = false;
         for (var i = 0; i < _cursors.Length; i++)
         {
             _cursors[i].Disable();
@@ -29,11 +31,17 @@ public abstract class WindowController : MonoBehaviour
 
     private void OnInteract()
     {
+        _isBusy = true;
         _cursors[_currentCursorIndex].Select();
     }
     
     private void OnMoveCursor(Vector2 direction)
     {
+        if (_isBusy)
+        {
+            return;
+        }
+        
         AudioManager.Instance.PlaySFX(AudioTitle.MenuSelect);
         
         if (direction == Vector2.up)

@@ -15,24 +15,31 @@ public class PlayerMovement : MonoBehaviour
     private bool _isMoving;
     private Vector2 _currentDirection = Vector2.right;
     private WaitForSeconds _waitBetweenMove;
+    private float _currentDelay;
     
     public event Action<Vector2> OnMove;
     
-    private void Start()
-    {
-        _waitBetweenMove = new WaitForSeconds(_moveDelay);
-    }
-
     private void OnEnable()
     {
+        _currentDelay = _moveDelay;
+        _waitBetweenMove = new WaitForSeconds(_currentDelay);
         StartCoroutine(nameof(AutoMove));
+        
         InputManager.OnMoveDirectionChanged += ChangeDirection;
+        StaticEventHandler.OnFoodConsumed += OnFoodConsumed;
     }
 
     private void OnDisable()
     {
         PathTracker.Reset();
         InputManager.OnMoveDirectionChanged -= ChangeDirection;
+        StaticEventHandler.OnFoodConsumed -= OnFoodConsumed;
+    }
+
+    private void OnFoodConsumed(Food obj)
+    {
+        _currentDelay -= 0.015f;
+        _waitBetweenMove = new WaitForSeconds(_currentDelay);
     }
 
     private void ChangeDirection(Vector2 newDirection)
