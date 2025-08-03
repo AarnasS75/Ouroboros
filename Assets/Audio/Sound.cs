@@ -14,5 +14,6 @@ public enum AudioTitle
 {
     MenuSelect,
     WallHit,
-    Soundtrack
+    OstMainMenu,
+    OstGameplay
 }

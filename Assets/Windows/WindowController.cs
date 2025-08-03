@@ -7,7 +7,7 @@ public abstract class WindowController : MonoBehaviour
     private int _currentCursorIndex = 0;
     private bool _isBusy;
     
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         _isBusy = false;
         for (var i = 0; i < _cursors.Length; i++)
@@ -23,7 +23,7 @@ public abstract class WindowController : MonoBehaviour
         InputManager.OnInteract += OnInteract;
     }
 
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
         InputManager.OnMoveDirectionChanged -= OnMoveCursor;
         InputManager.OnInteract -= OnInteract;

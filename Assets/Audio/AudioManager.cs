@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -73,4 +74,55 @@ public class AudioManager : MonoBehaviour
             source.Stop();
         }
     }
+    
+    public void CrossfadeSoundtrack(AudioTitle fromTitle, AudioTitle toTitle, float duration)
+    {
+        if (!soundtrackSources.TryGetValue(fromTitle, out var fromSource))
+        {
+            Debug.LogWarning($"Soundtrack '{fromTitle}' not found!");
+            return;
+        }
+
+        if (!soundtrackSources.TryGetValue(toTitle, out var toSource))
+        {
+            Debug.LogWarning($"Soundtrack '{toTitle}' not found!");
+            return;
+        }
+
+        var toTargetVolume = GetSoundVolume(toTitle);
+        StartCoroutine(Crossfade(fromSource, toSource, duration, toTargetVolume));
+    }
+    
+    private float GetSoundVolume(AudioTitle title)
+    {
+        var sound = _soundtrackClips.Find(s => s.Title == title);
+        return sound != null ? sound.Volume : 1f;
+    }
+    
+    private IEnumerator Crossfade(AudioSource fromSource, AudioSource toSource, float duration, float toTargetVolume)
+    {
+        float time = 0f;
+
+        float fromStartVolume = fromSource.volume;
+        float toStartVolume = 0f;
+
+        toSource.volume = 0f;
+        toSource.Play();
+
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            float t = time / duration * 1.3f;
+
+            fromSource.volume = Mathf.Lerp(fromStartVolume, 0f, t);
+            toSource.volume = Mathf.Lerp(toStartVolume, toTargetVolume, t);
+
+            yield return null;
+        }
+
+        fromSource.Stop();
+        fromSource.volume = fromStartVolume;
+        toSource.volume = toTargetVolume;
+    }
+
 }

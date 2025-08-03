@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -13,8 +14,15 @@ public class MainMenuWindowController : WindowController
 
     private Coroutine _transitionCoroutine;
 
+    private void Start()
+    {
+        AudioManager.Instance.PlaySoundtrack(AudioTitle.OstMainMenu);
+    }
+
     public void Begin()
     {
+        AudioManager.Instance.CrossfadeSoundtrack(AudioTitle.OstMainMenu, AudioTitle.OstGameplay, _transitionDuration);
+        
         foreach (var elementToHide in _elementsToHide)
         {
             elementToHide.SetActive(false);
@@ -49,7 +57,7 @@ public class MainMenuWindowController : WindowController
             _rectTransform.localScale = Vector3.Lerp(initialScale, _targetScale, t);
             yield return null;
         }
-
+        
         _rectTransform.localScale = _targetScale;
         _onTransitionEnded?.Invoke();
     }

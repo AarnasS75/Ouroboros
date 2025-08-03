@@ -20,5 +20,6 @@ public class GameOverWindowController : WindowController
             _title.text = "Victory";
             _title.color = _gameWonTitleColor;
         }
+        AudioManager.Instance.CrossfadeSoundtrack(AudioTitle.OstGameplay, AudioTitle.OstMainMenu, 2f);
     }
 }

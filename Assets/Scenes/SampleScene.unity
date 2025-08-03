@@ -3683,7 +3683,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1488892566}
   - component: {fileID: 1488892565}
-  - component: {fileID: 1488892564}
   - component: {fileID: 1488892563}
   m_Layer: 0
   m_Name: UI Camera
@@ -3736,14 +3735,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &1488892564
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1488892562}
-  m_Enabled: 1
 --- !u!20 &1488892565
 Camera:
   m_ObjectHideFlags: 0
@@ -4700,7 +4691,15 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: 537369aaa75cde94fbd0324880eea59e, type: 3}
     Volume: 0.3
     IsLooping: 0
-  _soundtrackClips: []
+  _soundtrackClips:
+  - Title: 2
+    Clip: {fileID: 8300000, guid: a08ed52fa58a7004e97afc143cd76404, type: 3}
+    Volume: 0.15
+    IsLooping: 1
+  - Title: 3
+    Clip: {fileID: 8300000, guid: 338f73b89fc30ba4cb12a97397474606, type: 3}
+    Volume: 0.2
+    IsLooping: 1
 --- !u!1 &1967769314
 GameObject:
   m_ObjectHideFlags: 0
