@@ -7,12 +7,8 @@ public class Food : MonoBehaviour
     {
         if (other.TryGetComponent(out PlayerMovement player))
         {
+            AudioManager.Instance.PlaySFX(SfxTitle.FoodConsumed);
             StaticEventHandler.CallFoodConsumedEvent(this);
-        }
-
-        if (other.TryGetComponent(out Ghost ghost))
-        {
-            StaticEventHandler.CallFoodDestroyedEvent(this);
         }
     }
 }

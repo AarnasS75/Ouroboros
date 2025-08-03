@@ -23,7 +23,8 @@ public class Song : Sound
 public enum SfxTitle
 {
     MenuSelect,
-    WallHit
+    WallHit,
+    FoodConsumed
 }
 
 public enum SongTitle

@@ -6471,6 +6471,12 @@ MonoBehaviour:
   - Clip: {fileID: 8300000, guid: 9f06f0665f1cd544489f470848b79308, type: 3}
     IsLooping: 0
     Title: 0
+  - Clip: {fileID: 8300000, guid: d751ac7f00186fb44986e28f7ca747c1, type: 3}
+    IsLooping: 0
+    Title: 1
+  - Clip: {fileID: 8300000, guid: 3bb875bb50d98114699b9633c86c51eb, type: 3}
+    IsLooping: 0
+    Title: 2
   _soundtrackClips:
   - Clip: {fileID: 8300000, guid: a08ed52fa58a7004e97afc143cd76404, type: 3}
     IsLooping: 1
@@ -6688,7 +6694,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Master
+  m_text: Music
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: af1c2e68b11cff7478e518218e5d0e01, type: 2}
   m_sharedMaterial: {fileID: 5327542378069981096, guid: af1c2e68b11cff7478e518218e5d0e01, type: 2}

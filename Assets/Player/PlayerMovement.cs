@@ -80,6 +80,7 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
         
+        AudioManager.Instance.PlaySFX(SfxTitle.WallHit);
         StopAllCoroutines();
         StaticEventHandler.CallGameFinishedEvent(new GameOverEventArgs
         {
