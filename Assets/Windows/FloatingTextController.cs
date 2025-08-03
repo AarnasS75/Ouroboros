@@ -11,13 +11,15 @@ public class FloatingTextController : MonoBehaviour
 
     private TMP_TextInfo _textInfo;
     private Vector3[][] _originalVertices;
+    
+    [Header("Color animate")]
+    [SerializeField] private TextMeshProUGUI _textToColorRotate;
 
     private void Start()
     {
         _text.ForceMeshUpdate();
         _textInfo = _text.textInfo;
 
-        // Store original vertex positions
         _originalVertices = new Vector3[_textInfo.meshInfo.Length][];
         for (int i = 0; i < _originalVertices.Length; i++)
         {
@@ -28,6 +30,20 @@ public class FloatingTextController : MonoBehaviour
         DOTween.To(() => 0f, UpdateVertexWave, 1f, 1f)
             .SetEase(Ease.Linear)
             .SetLoops(-1, LoopType.Incremental);
+
+        if (_textToColorRotate is null)
+        {
+            return;
+        }
+        
+        var hue = 0f;
+        DOTween.To(() => hue, h => {
+                hue = h;
+                if (hue > 1f) hue -= 1f;
+                _textToColorRotate.color = Color.HSVToRGB(hue, 1f, 1f);
+            }, 1f, 5f) // 5 seconds for full hue cycle; adjust as needed
+            .SetEase(Ease.Linear)
+            .SetLoops(-1, LoopType.Restart);
     }
 
     private void UpdateVertexWave(float t)
@@ -46,7 +62,6 @@ public class FloatingTextController : MonoBehaviour
 
             Vector3[] vertices = _textInfo.meshInfo[materialIndex].vertices;
 
-            // Get original center point
             Vector3 offset = (_originalVertices[materialIndex][vertexIndex] +
                               _originalVertices[materialIndex][vertexIndex + 2]) / 2;
 
@@ -59,7 +74,6 @@ public class FloatingTextController : MonoBehaviour
             }
         }
 
-        // Push updated vertices to mesh
         for (int i = 0; i < _textInfo.meshInfo.Length; i++)
         {
             _textInfo.meshInfo[i].mesh.vertices = _textInfo.meshInfo[i].vertices;

@@ -5,17 +5,21 @@ public abstract class WindowController : MonoBehaviour
     [SerializeField] private Cursor[] _cursors;
 
     private int _currentCursorIndex = 0;
-    private bool _isBusy;
+    
+    protected Cursor ActiveCursor => _cursors[_currentCursorIndex];
     
     protected virtual void OnEnable()
     {
-        _isBusy = false;
         for (var i = 0; i < _cursors.Length; i++)
         {
-            _cursors[i].Disable();
             if (i == 0)
             {
+                _currentCursorIndex = i;
                 _cursors[i].Enable();
+            }
+            else
+            {
+                _cursors[i].Disable();
             }
         }
 
@@ -31,19 +35,11 @@ public abstract class WindowController : MonoBehaviour
 
     private void OnInteract()
     {
-        _isBusy = true;
         _cursors[_currentCursorIndex].Select();
     }
     
-    private void OnMoveCursor(Vector2 direction)
+    protected virtual void OnMoveCursor(Vector2 direction)
     {
-        if (_isBusy)
-        {
-            return;
-        }
-        
-        AudioManager.Instance.PlaySFX(AudioTitle.MenuSelect);
-        
         if (direction == Vector2.up)
         {
             MoveCursor(-1);
@@ -56,6 +52,8 @@ public abstract class WindowController : MonoBehaviour
     
     private void MoveCursor(int delta)
     {
+        AudioManager.Instance.PlaySFX(SfxTitle.MenuSelect);
+
         _cursors[_currentCursorIndex].Disable();
 
         _currentCursorIndex += delta;
@@ -72,12 +70,12 @@ public abstract class WindowController : MonoBehaviour
         _cursors[_currentCursorIndex].Enable();
     }
 
-    public void Show()
+    public virtual void Show()
     {
         gameObject.SetActive(true);
     }
 
-    public void Hide()
+    public virtual void Hide(bool useTransition = false)
     {
         gameObject.SetActive(false);
     }

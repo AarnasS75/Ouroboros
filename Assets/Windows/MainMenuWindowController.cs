@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -16,12 +15,18 @@ public class MainMenuWindowController : WindowController
 
     private void Start()
     {
-        AudioManager.Instance.PlaySoundtrack(AudioTitle.OstMainMenu);
+        AudioManager.Instance.PlaySoundtrack(SongTitle.OstMainMenu);
     }
 
-    public void Begin()
+    public override void Hide(bool useTransition = false)
     {
-        AudioManager.Instance.CrossfadeSoundtrack(AudioTitle.OstMainMenu, AudioTitle.OstGameplay, _transitionDuration);
+        if (!useTransition)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+        
+        AudioManager.Instance.CrossfadeSoundtrack(SongTitle.OstMainMenu, SongTitle.OstGameplay, _transitionDuration);
         
         foreach (var elementToHide in _elementsToHide)
         {
@@ -35,7 +40,7 @@ public class MainMenuWindowController : WindowController
 
         _transitionCoroutine = StartCoroutine(ScaleUpCoroutine());
     }
-
+    
     public void Reset()
     {
         _rectTransform.localScale = Vector3.one;
@@ -60,5 +65,6 @@ public class MainMenuWindowController : WindowController
         
         _rectTransform.localScale = _targetScale;
         _onTransitionEnded?.Invoke();
+        gameObject.SetActive(false);
     }
 }
